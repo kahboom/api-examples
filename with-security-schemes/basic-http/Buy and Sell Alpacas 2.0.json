@@ -1,0 +1,192 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Buy and Sell Alpacas 2.0",
+    "description": "Just a little API for buying and selling alpacas, nothing unusual..",
+    "contact": {
+      "name": "Rachel McGeever",
+      "url": "https://www.rachelcodesandalsobuysandsellsalpacas.com",
+      "email": "ryordan@redhat.com"
+    },
+    "license": {
+      "name": "Mozilla 2.0",
+      "url": "https://www.mozilla.org/en-US/MPL/2.0/"
+    },
+    "version": "17.3.1"
+  },
+  "host": "www.rachelcodesandalsobuysandsellsalpacas.com",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/alpacas": {
+      "get": {
+        "summary": "Alpacas_GET",
+        "description": "Get a list of alpacas available for purchase.",
+        "operationId": "AlpacasGet",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Thank you for coming, have a nice day."
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/alpacas/{id}": {
+      "get": {
+        "summary": "AlpacasById_GET",
+        "description": "View details of the alpaca in question for purchase.",
+        "operationId": "AlpacasByIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the alpaca.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns an alpaca.",
+            "schema": {
+              "$ref": "#/definitions/RootTypeforAlpaca"
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "summary": "AlpacasById_PUT",
+        "description": "Update the listing of the alpaca.",
+        "operationId": "AlpacasByIdPut",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the alpaca.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thank you for coming, have a nice day."
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "summary": "AlpacasById_POST",
+        "description": "List a new alpaca for sale.",
+        "operationId": "AlpacasByIdPost",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the alpaca.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thank you for coming, have a nice day."
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "summary": "AlpacasById_DELETE",
+        "description": "Delete a listing for an alpaca. This will not actually delete an alpaca. Alpacas are living creatures that cannot be deleted.",
+        "operationId": "AlpacasByIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The unique identifier of the alpaca.",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Thank you for coming, have a nice day."
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "RootTypeforAlpaca": {
+      "title": "RootTypeforAlpaca",
+      "description": "The root of the Alpaca type's schema.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "nasaFimsAuthHttp": {
+      "type": "basic",
+      "description": "And for no reason whatsoever we are also using NASA's FIMS Auth server.\n\nThe FIMS AZ server authenticates clients using the HTTP Authorization header with the Basic keyword and the oauth2 client secret. Note that the FIMS Authorization Server facilitates the RFC-6749 Client Credentials flow for UTM components that are Oauth2 Resources servers."
+    }
+  },
+  "security": [
+    {
+      "nasaFimsAuthHttp": [],
+      "nasaFimsOauth": [
+        "utm.nasa.gov_read.fimsadmin",
+        "utm.nasa.gov_read.operation",
+        "utm.nasa.gov_read.publicsafety",
+        "utm.nasa.gov_read.constraint",
+        "utm.nasa.gov_read.uvin",
+        "utm.nasa.gov_write.uvin",
+        "utm.nasa.gov_read.conflictmanagement"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "awww",
+      "description": "They are so cute!"
+    },
+    {
+      "name": "wool",
+      "description": "They totally have it."
+    }
+  ]
+}
